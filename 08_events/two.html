@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Asynchronous Javascript</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout(()=>{
+    //     console.log('Hello Payal');
+    // },1000)
+    // setInterval(()=>{
+    //     console.log('I love you!!')
+    // },1000)
+
+    const changeHeading = function(){
+        document.querySelector('h1').innerText = 'Hello Payal';
+    }
+    const stopChange = setTimeout(changeHeading,3000)
+
+    document.querySelector('#stop').addEventListener('click',()=>{
+        clearTimeout(stopChange)
+        console.log('stopped');
+        
+    })
+
+</script>
+</html>

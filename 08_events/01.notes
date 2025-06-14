@@ -1,0 +1,20 @@
+Javascript
+    - js is asynchronous but its default behaviour is synchronous
+    - synchronous (by default)
+    - single threaded
+
+
+Execution context 
+    - execute one line of code at a time
+    - each operation waits for the last one to complete before executing
+    |
+    | - console.log(1)
+    | 
+    | - console.log(2)
+    |
+
+
+
+    Blocking code              v/s              Non Blocking code
+1. Blocks the flow of program               1. Does not block Execution
+2. Read file sync                           2. Read file async

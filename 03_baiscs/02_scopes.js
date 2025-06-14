@@ -16,7 +16,7 @@ console.log(c);
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
-addone(5)             //will not give error
+console.log(addone(5));             //will not give error
 function addone(num) {
     return num + 1
 }
@@ -26,3 +26,5 @@ const addTwo = function (num) {
     return num + 2;
 }
 console.log(addTwo(5))
+
+//function hoisting works with only function decalration and not with function expressions.

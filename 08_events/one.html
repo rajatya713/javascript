@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body style="background-color: rgb(61, 61, 92)">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: rgb(226, 218, 218)" href="https://google.com" id="google">Google</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // document.getElementById('owl').onclick = function(){
+    //     alert('owl clicked')
+    // }
+    // // this gives less features than addEventListener  
+
+    //attachEvent() // is used in old versions of IE, it is not supported in modern browsers. IE means Internet Explorer.
+    //jQuery - onEventListener 
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   (e) => {
+    //     console.log('clicked inside the owl');
+    //     e.stopPropagation()
+    //   },
+    //   false
+    // );       //third parameter is optional, default is false.
+    //This is called event propagation
+    //Its of two types:
+    //false - event bubbling(inside to outside)
+    //true - event capturing (top to bottom)
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   (e) => {
+    //     console.log('clicked inside the ul');
+        
+    //   },
+    //   false
+    // );
+
+    //-------Events---------
+    //type
+    //timestamp
+    //defaultPrevented
+    //target
+    //toElement
+    //srcElement
+    //currentTarget
+    //clientX, clientY, screenX, screenY
+    //altkey, ctrlkey, shiftkey, keyCode
+
+
+
+    // document.getElementById('google').addEventListener('click',(e)=>{
+    //     console.log('google clicked');
+    //     e.preventDefault()
+    //     // e.stopPropagation() // this will stop the event from bubbling up to the parent elements
+
+    // },false) 
+
+    //Event bubbling is the process where the event starts from the target element and bubbles up to the parent elements.
+    //Event capturing is the process where the event starts from the top element and goes down to the target element.
+
+    document.querySelector('#images').addEventListener('click',(e)=>{
+        console.log(e.target.parentNode);
+        if(e.target.tagName === 'IMG'){
+            e.target.parentNode.remove()
+        }
+    },false)
+
+  </script>
+</html>

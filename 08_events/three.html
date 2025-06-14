@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let disabled = true;
+    const sayName = (str)=>{
+        console.log('Hello',str);
+        console.log(Date.now());
+    }
+    let startStop;
+    const stopRef = document.querySelector('#stop')
+    const startRef = document.querySelector('#start')
+
+    if(disabled){
+        stopRef.setAttribute('disabled','')
+    }
+    
+    stopRef.addEventListener('click',()=>{
+        console.log('stopped');
+        clearInterval(startStop)
+        stopRef.setAttribute('disabled','')
+        startRef.removeAttribute('disabled')
+    })
+    startRef.addEventListener('click',()=>{
+        console.log('started');
+        startStop = setInterval(sayName,1000,'payal')
+        startRef.setAttribute('disabled','')
+        stopRef.removeAttribute('disabled')
+    })
+</script>
+</html>

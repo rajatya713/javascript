@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github API</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Github Profile</h1>
+    <div style="border: 2px solid black; text-align: center;">
+        <img id="profile-avatar" src="" alt="Profile Avatar" style="width: 150px; height: 150px; border-radius: 50%;">
+        <p id="profile-name"></p>
+        <p id="profile-bio"></p>
+        <p id="followers"></p>
+    </div>
+    
+</body>
+<script>
+    const url = 'https://api.github.com/users/piyushya'
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.send()
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText)
+            console.log(data)
+            document.querySelector('#profile-name').innerText = data.name
+            document.querySelector('#profile-bio').innerText = data.bio
+            document.querySelector('#profile-avatar').src = data.avatar_url
+
+
+            const followersUrl = data.followers_url
+            const followersXhr = new XMLHttpRequest()   
+            followersXhr.open('GET', followersUrl)
+            followersXhr.send()
+            followersXhr.onload = function() {
+                if (followersXhr.status === 200) {
+                    const followersData = JSON.parse(followersXhr.responseText)
+                    const followersList = followersData.map(follower => follower.login).join(', ')
+                    document.querySelector('#followers').innerText = `Followers: ${followersList}`
+                } else {
+                    console.error('Error fetching followers:', followersXhr.status, followersXhr.statusText)
+                }
+            }
+        } else {
+            console.error('Error fetching data:', xhr.status, xhr.statusText)
+        }
+    }
+
+
+</script>
+</html>
