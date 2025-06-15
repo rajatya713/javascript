@@ -35,9 +35,10 @@ const user = {
 
 // Example of a function that uses 'this'
 function showThis() {
-    console.log(this);
+    console.log(`Function: ${this}`); // In the global context, this will log the global object (window in browsers).
+    // In a function, 'this' refers to the global object (window in browsers, global in Node.js).
 }
-// showThis();
+showThis();
 
 //------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +79,7 @@ const user2 = new User('John', 5, false);
 // Every function in JavaScript has a prototype property that is used to add properties and methods to the objects created by that function.
 User.prototype.logout = function() {
     console.log("User logged out");
-    console.log(this); // 'this' refers to the instance of the User object.
+    return this // 'this' refers to the instance of the User object.
 }
 
 //------------------------------------------------------------------

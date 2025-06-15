@@ -11,6 +11,7 @@ class User{
 class Teacher extends User{
     constructor(username, subject){
         super(username); // Call the parent class constructor
+        // replacement of call() method
         this.subject = subject;
     }
     logMe(){
